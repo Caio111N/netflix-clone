@@ -2,6 +2,10 @@
 
 Um projeto de estudo recriando a interface da Netflix usando **HTML, CSS e JavaScript**.
 
+## Demonstração
+Veja o projeto rodando aqui:  
+[Netflix Clone - Demo](https://caio111n.github.io/netflix-clone/)
+
 ## Funcionalidades
 - Página inicial com layout inspirado na Netflix
 - Catálogo de filmes e séries com pôsteres
@@ -18,8 +22,3 @@ Um projeto de estudo recriando a interface da Netflix usando **HTML, CSS e JavaS
 - HTML5
 - CSS3
 - JavaScript
-
-## 📖 Como usar
-1. Clone este repositório:
-   ```bash
-   git clone https://github.com/Caio111N/netflix-clone.git
