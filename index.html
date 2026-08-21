@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Netflix Clone</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <nav class="header">
+      <h1 class="logo">NETFLIX</h1>
+      <div class="nav">
+        <ul>
+          <li><a href="#">Início</a></li>
+          <li><a href="#series">Séries</a></li>
+          <li><a href="#filmes">Filmes</a></li>
+          <li><a href="#minhaLista">Minha Lista</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Banner principal (Hero) -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Stranger Things</h1>
+        <p>O mundo invertido está de volta. Prepare-se para o mistério.</p>
+        <button>▶ Assistir</button>
+        <button>ℹ Mais informações</button>
+      </div>
+    </section>
+
+    <!-- Carrosséis -->
+    <section class="carrossel" id="populares">
+      <h2>Populares</h2>
+      <div class="carrossel-row"></div>
+    </section>
+
+    <section class="carrossel" id="series">
+      <h2>Séries</h2>
+      <div class="carrossel-row"></div>
+    </section>
+
+    <section class="carrossel" id="filmes">
+      <h2>Filmes</h2>
+      <div class="carrossel-row"></div>
+    </section>
+
+    <section class="carrossel" id="minhaLista">
+      <h2>Minha Lista</h2>
+      <div class="carrossel-row"></div>
+    </section>
+
+    <!-- Modal de detalhes -->
+    <div id="detalhesModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1 id="modalTitulo"></h1>
+        <p id="modalDescricao"></p>
+        <div class="modal-buttons">
+          <button>▶ Assistir</button>
+          <button>➕ Minha Lista</button>
+          <button>👍 Curtir</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
