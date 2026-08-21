@@ -19,3 +19,9 @@ Ele exibe carrosséis de séries e filmes com pôsteres, botões interativos (As
 - HTML5
 - CSS3
 - JavaScript (ES6)
+
+## 🌐 Demo
+
+Veja o projeto rodando online:  
+ [Netflix Clone - Demo](https://Caio111N.github.io/netflix-clone)
+
