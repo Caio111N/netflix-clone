@@ -23,5 +23,8 @@ Ele exibe carrosséis de séries e filmes com pôsteres, botões interativos (As
 ## Demo
 
 Veja o projeto rodando online:  
- [Netflix Clone - Demo]((https://caio111n.github.io/netflix-clone/))
+ [Netflix Clone - Demo](https://caio111n.github.io/netflix-clone/)
+
+
+
 
