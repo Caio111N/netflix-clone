@@ -22,4 +22,4 @@ Um projeto de estudo recriando a interface da Netflix usando **HTML, CSS e JavaS
 ## 📖 Como usar
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/CaioN1905/netflix-clone.git
+   git clone https://github.com/Caio111N/netflix-clone.git
