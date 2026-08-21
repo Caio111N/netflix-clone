@@ -104,6 +104,7 @@ function renderCarrossel(id, lista) {
       abrirDetalhes(item);
     });
 
+    // Botão Lista no card
     const btnLista = card.querySelector(".btn-lista");
     btnLista.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -114,7 +115,6 @@ function renderCarrossel(id, lista) {
         btnLista.textContent = "✓ Na Minha Lista";
         btnLista.classList.add("added");
       } else {
-        // opcional: remover da lista
         carrosseis.minhaLista = carrosseis.minhaLista.filter(
           (f) => f.titulo !== item.titulo,
         );
@@ -122,8 +122,10 @@ function renderCarrossel(id, lista) {
         btnLista.textContent = "➕ Lista";
         btnLista.classList.remove("added");
       }
+      salvarMinhaLista();
     });
 
+    // Evita scroll da página ao passar o mouse sobre o carrossel
     const carrossel = section.querySelector(".carrossel-container");
 
     carrossel.addEventListener(
@@ -158,6 +160,52 @@ function renderCarrossel(id, lista) {
   });
 }
 
+// Botão Assistir abre modal
+function abrirDetalhes(item) {
+  const modal = document.getElementById("detalhesModal");
+  document.getElementById("modalTitulo").textContent = item.titulo;
+  document.getElementById("modalDescricao").textContent =
+    `Descubra mais sobre ${item.titulo}`;
+  modal.style.display = "flex";
+
+  // Botão Minha Lista no modal
+  const btnMinhaLista = modal.querySelector(".btn-lista");
+  btnMinhaLista.textContent = carrosseis.minhaLista.find(
+    (f) => f.titulo === item.titulo,
+  )
+    ? "✓ Na Minha Lista"
+    : "➕ Lista";
+
+  btnMinhaLista.onclick = () => {
+    const jaTem = carrosseis.minhaLista.find((f) => f.titulo === item.titulo);
+    if (!jaTem) {
+      carrosseis.minhaLista.push(item);
+      renderCarrossel("minhaLista", carrosseis.minhaLista);
+      btnMinhaLista.textContent = "✓ Na Minha Lista";
+    } else {
+      carrosseis.minhaLista = carrosseis.minhaLista.filter(
+        (f) => f.titulo !== item.titulo,
+      );
+      renderCarrossel("minhaLista", carrosseis.minhaLista);
+      btnMinhaLista.textContent = "➕ Lista";
+    }
+    salvarMinhaLista();
+  };
+
+  // Botão Curtir no modal
+  const btnCurtir = modal.querySelector(".btn-curtir");
+  btnCurtir.textContent = btnCurtir.classList.contains("active")
+    ? "❤️ Curtido"
+    : "👍 Curtir";
+
+  btnCurtir.onclick = () => {
+    btnCurtir.classList.toggle("active");
+    btnCurtir.textContent = btnCurtir.classList.contains("active")
+      ? "❤️ Curtido"
+      : "👍 Curtir";
+  };
+}
+
 // Hero rotativo automático
 function renderHeroRotativo() {
   const hero = document.querySelector(".hero");
@@ -188,20 +236,42 @@ function abrirDetalhes(item) {
     `Descubra mais sobre ${item.titulo}`;
   modal.style.display = "flex";
 
-  // botão Minha Lista
-  const btnMinhaLista = modal.querySelector(
-    ".modal-buttons button:nth-child(2)",
-  );
+  // Botão Minha Lista
+  const btnMinhaLista = modal.querySelector(".btn-lista");
+  btnMinhaLista.textContent = carrosseis.minhaLista.find(
+    (f) => f.titulo === item.titulo,
+  )
+    ? "✓ Na Minha Lista"
+    : "➕ Lista";
+
   btnMinhaLista.onclick = () => {
-    if (!carrosseis.minhaLista.find((f) => f.titulo === item.titulo)) {
+    const jaTem = carrosseis.minhaLista.find((f) => f.titulo === item.titulo);
+    if (!jaTem) {
       carrosseis.minhaLista.push(item);
       renderCarrossel("minhaLista", carrosseis.minhaLista);
+      btnMinhaLista.textContent = "✓ Na Minha Lista";
+    } else {
+      carrosseis.minhaLista = carrosseis.minhaLista.filter(
+        (f) => f.titulo !== item.titulo,
+      );
+      renderCarrossel("minhaLista", carrosseis.minhaLista);
+      btnMinhaLista.textContent = "➕ Lista";
     }
+    salvarMinhaLista();
   };
-}
 
-function salvarMinhaLista() {
-  localStorage.setItem("minhaLista", JSON.stringify(carrosseis.minhaLista));
+  // Botão Curtir
+  const btnCurtir = modal.querySelector(".btn-curtir");
+  btnCurtir.textContent = btnCurtir.classList.contains("active")
+    ? "❤️ Curtido"
+    : "👍 Curtir";
+
+  btnCurtir.onclick = () => {
+    btnCurtir.classList.toggle("active");
+    btnCurtir.textContent = btnCurtir.classList.contains("active")
+      ? "❤️ Curtido"
+      : "👍 Curtir";
+  };
 }
 
 function carregarMinhaLista() {
@@ -277,3 +347,11 @@ cards.forEach((card) => {
     document.body.classList.remove("no-scroll");
   });
 });
+
+renderCarrossel("populares", carrosseis.populares);
+renderCarrossel("series", carrosseis.series);
+renderCarrossel("filmes", carrosseis.filmes);
+renderCarrossel("minhaLista", carrosseis.minhaLista);
+
+renderHeroRotativo();
+carregarMinhaLista();

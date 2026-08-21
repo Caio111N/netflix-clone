@@ -166,14 +166,16 @@ body.no-scroll {
 }
 
 .btn-curtir {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 1.2rem;
-  cursor: pointer;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
 }
+
 .btn-curtir.active {
-  color: #E50914; /* vermelho Netflix */
+    color: #E50914;
+    /* vermelho Netflix */
 }
 
 
@@ -219,7 +221,7 @@ body.no-scroll {
     bottom: 0;
     left: 0;
     right: 0;
-     background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
     color: #fff;
     padding: 10px;
     opacity: 0;
@@ -353,28 +355,30 @@ section {
 }
 
 /* Modal */
+/* Estilo do modal */
 .modal {
     display: none;
     /* escondido por padrão */
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.8);
-    z-index: 100;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(5px);
+    z-index: 1000;
 }
 
 .modal-content {
-    background: #141414;
+    background: #111;
     padding: 20px;
     border-radius: 8px;
-    max-width: 600px;
-    width: 90%;
     color: #fff;
+    max-width: 500px;
+    width: 90%;
     text-align: center;
     position: relative;
-    animation: zoomIn 0.3s ease;
 }
 
 @keyframes zoomIn {
@@ -389,25 +393,82 @@ section {
     }
 }
 
+.modal-content h2 {
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    margin-bottom: 20px;
+}
+
+/* Botões dentro do modal */
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
 .modal-buttons button {
-    margin: 10px;
-    padding: 10px 20px;
+    padding: 10px 15px;
     border: none;
-    background: #e50914;
-    color: #fff;
+    border-radius: 5px;
     cursor: pointer;
-    border-radius: 4px;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
 .modal-buttons button:hover {
     background: #f40612;
 }
 
+/* Botão Assistir */
+/* Assistir */
+.btn-assistir {
+    background-color: #e50914;
+    color: #fff;
+}
+
+.btn-assistir:hover {
+    background-color: #b20710;
+}
+
+/* Lista */
+.btn-lista {
+    background-color: #333;
+    color: #fff;
+}
+
+.btn-lista.added {
+    background-color: green;
+    color: #fff;
+}
+
+/* Curtir */
+.btn-curtir {
+    background-color: #444;
+    color: #fff;
+}
+
+.btn-curtir.active {
+    background-color: red;
+    color: #fff;
+}
+
 .close {
     position: absolute;
-    top: 20px;
-    right: 30px;
+    top: 10px;
+    right: 15px;
     font-size: 28px;
+    font-weight: bold;
     color: #fff;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.close:hover {
+    color: #e50914;
+    /* vermelho estilo Netflix */
+    transform: scale(1.2) rotate(90deg);
+    /* efeito diagonal ao passar o mouse */
 }
