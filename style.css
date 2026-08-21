@@ -1,0 +1,413 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #141414;
+    color: #fff;
+    scroll-behavior: smooth;
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+
+/* Header fixo */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e50914;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.nav li {
+    margin-left: 20px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.nav a:hover {
+    color: #e50914;
+}
+
+/* Hero */
+.hero {
+    height: 70vh;
+    background-size: cover;
+    background-position: center top;
+    display: flex;
+    align-items: flex-end;
+    padding: 40px;
+    position: relative;
+    margin-top: 70px;
+    /* espaço para não ficar atrás do header */
+    transition: background-image 1s ease-in-out;
+    /* transição suave */
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    animation: fadeIn 1s ease-in-out;
+    /* animação suave no conteúdo */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.hero-content h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+.hero-content button {
+    margin-right: 10px;
+    padding: 10px 20px;
+    border: none;
+    background: #e50914;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.hero-content button:hover {
+    background: #f40612;
+}
+
+/* Carrossel */
+.carrossel {
+    padding: 20px;
+    position: relative;
+}
+
+.carrossel-container {
+    position: relative;
+}
+
+.seta {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 30;
+}
+
+.seta-esquerda {
+    left: 0;
+}
+
+.seta-direita {
+    right: 0;
+}
+
+.seta:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.carrossel-container .seta {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.carrossel-container:hover .seta {
+    opacity: 1;
+}
+
+.btn-curtir {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.btn-curtir.active {
+  color: #E50914; /* vermelho Netflix */
+}
+
+
+.carrossel h2 {
+    margin-bottom: 15px;
+}
+
+.carrossel-row {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    /* Firefox */
+    user-select: none;
+    /* impede highlight azul */
+}
+
+.carrossel-row::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari */
+}
+
+/* Cards */
+.card {
+    position: relative;
+    flex: 0 0 auto;
+    width: 180px;
+    height: 270px;
+    transition: transform 0.3s;
+    overflow: hidden;
+    /* impede scroll interno */
+}
+
+.card:hover {
+    transform: scale(1.2);
+    z-index: 20;
+    /* fica por cima dos outros cards */
+}
+
+.card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+     background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: #fff;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+    /* impede scroll dentro da info */
+    pointer-events: auto;
+    /* permite clicar nos botões */
+}
+
+.card:hover .card-info {
+    opacity: 1;
+}
+
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    pointer-events: none;
+    /* evita highlight ao arrastar */
+    -webkit-user-drag: none;
+    /* Safari/Chrome */
+}
+
+.card:hover {
+    transform: scale(1.2);
+    z-index: 10;
+    /* fica por cima dos outros */
+}
+
+.card:hover .card-info {
+    opacity: 1;
+}
+
+.card-info {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+.card-info h3 {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.card-info button {
+    margin: 4px 4px 0 0;
+    padding: 6px 12px;
+    border: none;
+    background: #e50914;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 12px;
+    transition: background 0.3s;
+}
+
+.card-info button:hover {
+    background: #f40612;
+}
+
+
+/* Espaço extra ao rolar */
+section {
+    scroll-margin-top: 120px;
+}
+
+/* Responsividade */
+/* Telas grandes (TV ou monitores grandes) */
+@media (min-width: 1200px) {
+    .card {
+        width: 220px;
+        height: 330px;
+    }
+
+    .hero-content h1 {
+        font-size: 64px;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .nav li {
+        margin-left: 10px;
+    }
+
+    .hero-content h1 {
+        font-size: 28px;
+    }
+
+    .card {
+        width: 140px;
+        height: 210px;
+    }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 22px;
+    }
+
+    .hero-content p {
+        font-size: 14px;
+    }
+
+    .hero-content button {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .card {
+        width: 120px;
+        height: 180px;
+    }
+}
+
+/* Modal */
+.modal {
+    display: none;
+    /* escondido por padrão */
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: #141414;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 90%;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-buttons button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    background: #e50914;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.modal-buttons button:hover {
+    background: #f40612;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 28px;
+    color: #fff;
+    cursor: pointer;
+}
